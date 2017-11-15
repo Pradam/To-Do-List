@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="box box-primary">
+          <!-- /.box -->
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+          <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">To Do List Edit</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form" method="POST"> {% csrf_token %}
+                <!-- text input -->
+                <div class="form-group">
+                  <label> {{ form.name.label_tag }} </label>
+                  {{ form.name }}
+                </div>
+                <div class="form-group">
+                  <label>{{ form.created_by.label_tag }}</label>
+                  {{ form.created_by }}
+                </div>
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>{{form.description.label_tag}}</label>
+                  {{ form.description }}
+                </div>
+                <div class="form-group">
+                  <label>{{form.list_date.label_tag}}</label>
+                  {{form.list_date}}
+                </div>
+                <div class="form-group">
+                  <label>{{form.completed.label_tag}}</label>
+                  {{form.completed}}
+                </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-danger"><a href="/">Cancel</a></button>
+              </div>
+              </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+<script src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+      //Date picker
+      $('#id_list_date').datepicker({
+        autoclose: true
+      })
+  });
+</script>
+{% endblock %}
